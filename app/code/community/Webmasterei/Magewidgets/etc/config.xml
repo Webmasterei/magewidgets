@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Webmasterei Prange
+ * @copyright Copyright (c) 2015 Webmasterei Prange (https://www.webmasterei-prange.de)
+ * @package Magento Content Widgets
+ */
+-->
+<config>
+<modules>
+    <Webmasterei_Magewidgets>
+        <version>0.0.1</version>
+    </Webmasterei_Magewidgets>
+</modules>
+<global>
+    <helpers>
+        <webmasterei_mageWidgets>
+            <class>Webmasterei_Magewidgets_Helper</class>
+        </webmasterei_mageWidgets>
+    </helpers>
+    <blocks>
+        <webmasterei_mageWidgets>
+            <class>Webmasterei_Magewidgets_Block</class>
+        </webmasterei_mageWidgets>
+    </blocks>
+</global>
+    <frontend>
+        <layout>
+            <updates>
+                <Magewidgets>
+                    <file>webmasterei-magewidgets.xml</file>
+                </Magewidgets>
+            </updates>
+        </layout>
+    </frontend>
+</config>

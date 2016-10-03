@@ -1,0 +1,46 @@
+<?php
+
+
+$brand_header_logo_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$this->getData('brand_header_logo');
+$brand_header_img_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$this->getData('brand_header_img');
+$brand_header_title = $this->getData('brand_header_title');
+$brand_header_subTitle = $this->getData('brand_header_subTitle');
+$brand_header_text = $this->getData('brand_header_text');
+$brand_header_link = $this->getData('brand_header_link');
+$brand_header_titlePosition = $this->getData('brand_header_titlePosition');
+$baseUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+$call2Action = $this->getData('call2Action');
+
+
+?>
+
+<div class="brandpage-header <?php echo $brand_header_titlePosition; ?>">
+       <?php if ($brand_header_link) : ?>
+    <a href="<?php echo $baseUrl.$brand_header_link; ?>">
+        <?php endif; ?>
+    <img class="img-responsive" src="<?php echo $brand_header_img_url; ?>" alt="<?php echo $brand_header_title;?>"/>
+            <?php if($this->getData('brand_header_logo')) : ?>
+        <div class="brandpage-logo">
+            <img class="img-responsive" src="<?php echo $brand_header_logo_url;?>" alt="<?php echo $brand_header_title;?>"/>
+        </div>
+            <?php endif; ?>
+            <?php if($brand_header_title) : ?>
+        <div class="brand-title-large">
+            <h1>
+                <span class="title"><?php echo $brand_header_title; ?></span><?php if ($brand_header_subTitle) : ?><br>
+                <span class="subtitle ">
+                    <em>
+                        <?php echo $brand_header_subTitle; ?>
+                    </em>
+                </span>
+                <?php endif; ?>
+            </h1>
+            <?php if($call2Action) : ?>
+            <span class="btn btn-lg btn-primary"><?php echo $call2Action ?>&nbsp;<i class="fa fa-angle-double-right action-button"></i></span>
+            <?php endif; ?>
+        </div>
+            <?php endif; ?>
+        <?php if($brand_header_link) : ?>
+        </a>
+    <?php endif; ?>
+</div>
