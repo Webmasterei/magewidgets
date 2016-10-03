@@ -1,0 +1,22 @@
+# Created by Webmasterei Prange
+/*
+!/htdocs
+!.gitignore
+!composer*
+!README.md
+*zip
+*tar.gz
+/dbdumps
+/dbdumps/live_bulletshop.sql
+Würde htdocs/app/code/local/Bulletshop/Custom/Model/ löschen
+Würde htdocs/app/code/local/Itcb/Ajaxproduct/Model/Resource/ löschen
+Würde htdocs/app/design/frontend/default/blank/locale/de_DE/ löschen
+Würde htdocs/app/design/frontend/default/iphone/locale/de_DE/ löschen
+Würde htdocs/app/design/frontend/default/modern/locale/de_DE/ löschen
+Würde htdocs/lib/Credis/Credis/ löschen
+Würde app/code/local/Bulletshop/Custom/Model/ löschen
+Würde app/code/local/Itcb/Ajaxproduct/Model/Resource/ löschen
+Würde app/design/frontend/default/blank/locale/de_DE/ löschen
+Würde app/design/frontend/default/iphone/locale/de_DE/ löschen
+Würde app/design/frontend/default/modern/locale/de_DE/ löschen
+Würde lib/Credis/Credis/ löschen
