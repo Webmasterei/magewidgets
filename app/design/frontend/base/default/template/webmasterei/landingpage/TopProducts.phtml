@@ -1,0 +1,32 @@
+<?php
+$debug = 1;
+$category_id_1 = $this->getData('category_id_1');
+$category_id_2 = $this->getData('category_id_2');
+$slider_id = $this->getData('slider_id');
+$css = $this->getData('css');
+$store_id = Mage::App()->getStore()->getId();
+$category_1 = $this->getWidgetCategory($category_id_1);
+$category_2 = $this->getWidgetCategory($category_id_2);
+
+// Getting New Products
+$newProductsCollection = $this->_getNewProductCollection($category_1);
+$newProductsCollectionCount = $newProductsCollection->count();
+echo "Neue Produkte:".$newProductsCollection->count();
+if (!$newProductsCollectionCount) {
+    echo "there are no new products";
+    // Get Most Viewed Products
+}
+// Getting Special Price Offers
+$specialProductsCollection = $this->_getSpecialProductsColletion($category_2);
+$specialProductsCollectionCount = $specialProductsCollection->count();
+echo "specialProductsCollectionCount".$specialProductsCollectionCount;
+if (!$specialProductsCollectionCount){
+    echo "There is no SpecialOffers";
+    // get Most sold Products
+}
+
+?>
+<div class="landingpage-topProducts <?php echo $css; ?>">
+    
+</div>
+

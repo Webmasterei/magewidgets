@@ -1,47 +1,16 @@
 <?php
 
-$brand_header_logo_file = $this->getData('brand_header_logo');
-$brand_header_logo_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$brand_header_logo_file;
-$brand_header_img_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$this->getData('brand_header_img');
-$brand_header_title = $this->getData('brand_header_title');
-$brand_header_subTitle = $this->getData('brand_header_subTitle');
-$brand_header_text = $this->getData('brand_header_text');
-$brand_header_link = $this->getData('brand_header_link');
-$brand_header_titlePosition = $this->getData('brand_header_titlePosition');
-$baseUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
-$anchorlink = $this->getData('anchorlink');
-$call2Action = $this->getData('call2Action');
-
+$landingpage_header_title = $this->getData('landingpage_header_title');
+$landingpage_header_subtitle = $this->getData('landingpage_header_subtitle');
+$landingpage_header_css = $this->getData('landingpage_header_css');
 
 ?>
-
-<div class="brandpage-header <?php echo $brand_header_titlePosition; ?> <?php if(!$brand_header_logo_file) {echo 'noLogo';} ?>">
-       <?php if ($brand_header_link) : ?>
-    <a href="<?php echo $brand_header_link; ?>">
-        <?php endif; ?>
-    <img class="header-image" src="<?php echo $brand_header_img_url; ?>" alt="<?php echo $brand_header_title.' '.$brand_header_subTitle;?>"/>
-            <?php if($brand_header_logo_file) : ?>
-        <div class="brandpage-logo">
-            <img class="img-responsive" src="<?php echo $brand_header_logo_url;?>" alt="x<?php echo $brand_header_title;?>"/>
-        </div>
-            <?php endif; ?>
-            <?php if($brand_header_title) : ?>
-        <div class="brand-title-large">
-                    <h1 class="h1"><?php echo $brand_header_title; ?></h1>
-                    <?php if ($brand_header_subTitle) : ?>
-                        <br><p class="subtitle"><?php echo $brand_header_subTitle; ?></p>
-                    <?php endif; ?>
-               <?php if($call2Action) : ?>
-            <br><span class="btn btn-lg btn-primary"><?php echo $call2Action ?>&nbsp;<i class="fa fa-angle-double-right action-button"></i></span>
-            <?php endif; ?>
-        </div>
-            <?php endif; ?>
-        <?php if($brand_header_text): ?>
-        <div class="brandpage-text" ><?php echo $brand_header_text ?>
-        <?php if($anchorlink): ?>
-                <a href="#category-bottom"><?php echo $this->__('Weiterlesen &raquo;') ?></a>
-        <?php endif; ?>
-        </div>
-        <?php endif; ?>
-        <?php if($brand_header_link) : ?></a><?php endif; ?>
+<div class="landingpage-header <?php echo $landingpage_header_css; ?>">
+    <?php if($landingpage_header_title) : ?>
+        <h1><?php echo $landingpage_header_title ?></h1>
+    <?php endif; ?>
+    <?php if($landingpage_header_subtitle) : ?>
+        <p><?php echo $landingpage_header_subtitle ?></p>
+    <?php endif; ?>
 </div>
+

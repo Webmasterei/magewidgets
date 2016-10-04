@@ -1,0 +1,76 @@
+<?php
+// app/code/local/Envato/WidgetLinks/Block/Links.php
+class Webmasterei_Landingpage_Block_TopProducts
+    extends Mage_Catalog_Block_Product_List
+    implements Mage_Widget_Block_Interface
+{
+
+    /**
+     * Retrieve loaded category collection
+     *
+     * @return Mage_Eav_Model_Entity_Collection_Abstract
+     **/
+    protected function _getNewProductCollection($category)
+    {
+        $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+        $collection = Mage::getResourceModel('catalog/product_collection');
+        $collection->setVisibility(Mage::getSingleton('catalog/product_visibility')->getVisibleInCatalogIds());
+
+        $collection = $this->_addProductAttributesAndPrices($collection)
+            ->addStoreFilter()
+            ->addCategoryFilter($category)
+            ->addAttributeToFilter('news_from_date', array('date' => true, 'to' => $todayDate))
+            ->addAttributeToFilter('news_to_date', array('or'=> array(
+                0 => array('date' => true, 'from' => $todayDate),
+                1 => array('is' => new Zend_Db_Expr('null')))
+            ), 'left')
+            ->addAttributeToSort('news_from_date', 'desc');
+
+        $this->setProductCollection($collection);
+
+        return $collection;
+    }
+
+    protected function _getSpecialProductsColletion($category)
+    {
+        $collection = Mage::getModel('catalog/product')->getCollection();
+        $collection->addAttributeToSelect(array(
+            'image',
+            'name',
+            'short_description',
+            'price',
+            'special_price'
+        ))
+            ->addCategoryFilter($category)
+            ->addFieldToFilter('visibility', array(
+                Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
+                Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
+            )) //showing just products visible in catalog or both search and catalog
+            ->addFinalPrice()
+            ->addAttributeToSort('special_price', 'asc') //in case we would like to sort products by price
+            ->getSelect()
+            ->where('price_index.final_price < price_index.price')
+//                        ->limit(30) //we can specify how many products we want to show on this page
+//                        ->order(new Zend_Db_Expr('RAND()')) //in case we would like to sort products randomly
+
+        ;
+
+        return $collection;
+    }
+
+    protected function getWidgetCategory($categoryId)
+    {
+        $storeId = Mage::app()->getStore()->getStoreId();
+        $currentCategory =  Mage::registry('current_category');
+        if($categoryId) {
+        $category = Mage::getModel('catalog/category')->load($categoryId);
+        }
+        elseif($currentCategory) {
+            $category = $currentCategory;
+        }  else {
+            $categoryId = Mage::app()->getStore($storeId)->getRootCategoryId();
+            $category = Mage::getModel('catalog/category')->load($categoryId);
+        }
+        return $category;
+    }
+}// Mage_Catalog_Block_Product_New
