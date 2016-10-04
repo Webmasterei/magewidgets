@@ -1,0 +1,90 @@
+
+<?php
+$sku_list = $this->getData('sku_list');
+$productSkus = explode(",",$sku_list);
+$productCollection=Mage::getModel('catalog/product')
+    ->getCollection()
+    ->addAttributeToFilter('sku', array('in' => $productSkus))
+    ->addAttributeToSelect('*')
+    ->addUrlRewrite();
+$imageRenderSize=150;
+$menu_image_image = $this->getData('menu_image_image');
+$baseUrl = Mage::getBaseUrl();
+$menu_image_rootURL = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$menu_image_image;
+$menu_image_link = $this->getData('menu_image_link');
+$menu_image_text = $this->getData('menu_image_text');
+$menu_category_link = $this->getData('menu_category_link');
+$menu_category_text = $this->getData('menu_category_text');
+
+if ($_product->isSaleable()) {
+
+    if ($menu_image_image): ?>
+
+        <div class="col-sm-8">
+            <?php $i = 0;
+            foreach ($productCollection as $_product): ?>
+                <div class=" col-sm-3">
+                    <a href="<?php echo $_product->getProductUrl() ?>"
+                       title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                       class="product-image">
+                        <img class="img-responsive"
+                             src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($imageRenderSize); ?>"
+                             alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
+
+                        <p class="h5 text-center"><?php echo $_product->getAttributeText('serie'); ?>
+                            <br><?php echo $_product->getAttributeText('manufacturer'); ?></p>
+                    </a>
+                </div>
+
+                <?php $i++;
+                if ($i == 7) {
+                    break;
+                } endforeach; ?>
+            <div class="col-sm-3 text-center">
+                <a class="menu-category-link" href="<?php echo $menu_image_rootURL . $menu_category_link ?>"
+                   alt="<?php echo $menu_category_text ?>">
+                    <i class="fa fa-angle-double-right fa-5x"></i>
+
+                    <p><?php echo $menu_category_text ?></p>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <a href="<?php echo $menu_image_link ?>" title="<?php echo $menu_image_text ?>" class="menu-image">
+                <img class="img-responsive" src="<?php echo $menu_image_rootURL ?>"
+                     alt="<?php echo $menu_image_text ?>"/>
+            </a>
+        </div>
+
+    <?php else: ?>
+
+        <?php $i = 0;
+        foreach ($productCollection as $_product): ?>
+            <div class="col-sm-2">
+                <a href="<?php echo $_product->getProductUrl() ?>"
+                   title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                   class="product-image">
+                    <img class="img-responsive"
+                         src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($imageRenderSize); ?>"
+                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
+
+                    <p class="h5 text-center"><?php echo $_product->getAttributeText('serie'); ?>
+                        <br><?php echo $_product->getAttributeText('manufacturer'); ?></p>
+                </a>
+            </div>
+            <?php $i++;
+            if ($i == 7) {
+                break;
+            } endforeach; ?>
+        <div class="col-sm-2 text-center">
+            <a class="menu-category-link" href="<?php echo $menu_category_link ?>">
+                <i class="fa fa-angle-double-right fa-5x"></i>
+
+                <p><?php echo $menu_category_text ?></p>
+            </a>
+        </div>
+
+
+    <?php endif;
+}
+?>

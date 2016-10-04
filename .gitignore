@@ -8,7 +8,7 @@
 /app/etc/*
 !/app/etc/modules
 /app/etc/modules/*
-!/app/etc/modules/Webmasterei_Brandpage.xml
+!/app/etc/modules/Webmasterei_Landingpage.xml
 !/app/code
 /app/code/*
 !/app/code/community

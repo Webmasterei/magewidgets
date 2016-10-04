@@ -1,0 +1,37 @@
+
+<?php
+
+$categorie_qty = $this->getData('categorie_qty');
+$baseUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+$media_path = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); 
+
+$categories = array(
+    array("title" => $this->getData('categorie_1_title'), "link" => $this->getData('categorie_1_link'), "image" => $this->getData('categorie_1_image')),
+    array("title" => $this->getData('categorie_2_title'), "link" => $this->getData('categorie_2_link'), "image" => $this->getData('categorie_2_image')),
+    array("title" => $this->getData('categorie_3_title'), "link" => $this->getData('categorie_3_link'), "image" => $this->getData('categorie_3_image')),
+    array("title" => $this->getData('categorie_4_title'), "link" => $this->getData('categorie_4_link'), "image" => $this->getData('categorie_4_image'))
+);
+
+
+$imageTestHeight = 130;
+$i=0;
+
+if($categorie_qty==1) { $dynamicCols =  'col-xs-12 col-sm-6';}
+elseif($categorie_qty==2) {$dynamicCols =  'col-xs-12 col-sm-4';}
+elseif($categorie_qty==3) {$dynamicCols = 'col-xs-12 col-sm-3';}
+?>
+
+<div class="row">
+  <?php do { ?>
+        <div class="<?php echo $dynamicCols; ?> brandpage-categories">
+
+            <a href="<?php echo $baseUrl.$categories["$i"]["link"] ?>" title="<?php echo $categories["$i"]["title"] ?>">
+                <img class="img-responsive" src="<?php echo $media_path.$categories["$i"]["image"];?>" alt="<?php echo $categories["$i"]["title"] ?>"  title="<?php echo $categories["$i"]["title"] ?>" >
+               <?php if($categories["$i"]["title"]) :?>
+                    <div class="h2"><?php echo $categories["$i"]["title"] ?></div>
+               <?php endif; ?>
+            </a>
+        </div>        <?php $i++;
+    }
+    while ($categorie_qty >= $i );  ?>
+</div>

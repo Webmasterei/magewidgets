@@ -1,0 +1,41 @@
+<?php
+$content_column = $this->getData('content_column');
+$content_image_url = $this->getData('content_image');
+$content_title = $this->getData('content_title');
+$content_text = $this->getData('content_text');
+$content_link = $this->getData('content_link');
+$content_video = $this->getData('content_video');
+$content_link_text = $this->getData('content_link_text');
+$media_path = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+
+
+
+?>
+
+
+
+<div class="content-block">
+    <div class="col-xs-12 col-sm-6 <?php if ($content_column == 'right') {
+        echo 'pull-right';
+    } ?>">
+        <?php if ($content_video): ?>
+            <div class="responsive-video">
+                <iframe width="854" height="510" src="<?php echo $content_video; ?>" frameborder="0"
+                        allowfullscreen></iframe>
+            </div>
+        <?php else: ?>
+            <img class="img-responsive" src="<?php echo $media_path . $content_image_url; ?>"
+                 alt="<?php echo $content_title; ?>">
+        <?php endif; ?>
+    </div>
+
+    <div class="col-xs-12 col-sm-6">
+        <h3><?php echo $content_title; ?></h3>
+
+        <div class="brand-content-text"><?php echo $content_text; ?></div>
+        <?php if ($content_link): ?>
+            <div class="text-center"> <a class="btn btn-large btn-primary"
+                                         href="<?php echo Mage::getBaseUrl() . $content_link; ?>"><?php if ($content_link_text): echo $content_link_text;
+                else: echo $content_title; endif; ?></a></div><?php endif; ?>
+    </div>
+</div>

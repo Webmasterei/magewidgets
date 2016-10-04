@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Webmasterei Prange
+ * @copyright Copyright (c) 2015 Webmasterei Prange (https://www.webmasterei-prange.de)
+ * @package Magento Content Widgets
+ */
+-->
+<config>
+    <modules>
+        <Webmasterei_Landingpage>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Webmasterei_Landingpage>
+    </modules>
+</config>

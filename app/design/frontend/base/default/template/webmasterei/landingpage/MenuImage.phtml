@@ -1,0 +1,16 @@
+
+<?php
+$menu_image_image = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$this->getData('menu_image_image');
+$menu_image_link = $this->getData('menu_image_link');
+$menu_image_text = $this->getData('menu_image_text');
+?>
+
+
+<div class="col-xs-6 col-sm-4">
+    <a href="<?php echo $menu_image_link ?>" title="<?php echo $menu_image_text ?>" class="menu-image">
+        <img class="img-responsive" src="<?php echo $menu_image_image ?>" alt="<?php echo $menu_image_text ?>" />
+    </a>
+</div>
+
+
+

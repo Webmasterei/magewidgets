@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+<widgets>
+    <brand_header_widget type="landingpage/Header" translate="name description">
+        <name>Webmasterei | Landingpage Header</name>
+        <description>Erstellt den Content-Header einer Hersteller-Landingpage</description>
+        <parameters>
+            <!-- acwp = ActiveCodelineWidgetParameter -->
+            <brand_header_logo>
+                <visible>1</visible>
+                <label>Herstellerlogo</label>
+                <description>Ausgabeformat ist 160x120 px mit Alphakanal. Bitte nur *.png files. Es wird nicht skaliert.
+                </description>
+                <type>widgetimagechooser/chooser</type>
+            </brand_header_logo>
+            <brand_header_img>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Stimmungsbild</label>
+                <description>Ausgabeformat ist 1140x595px bitte nur *jpg, progressiv, Qualität 60 Es wird nicht skaliert.
+                </description>
+                <type>widgetimagechooser/chooser</type>
+            </brand_header_img>
+            <h1_option>
+                <visible>1</visible>
+                <label>H1 Option</label>
+                <description>Wählen, ob Title 1 oder Title 2 H1 ist. Der andere Title wir mit p ausgezeichnet.</description>
+                <type>select</type>
+                <values>
+                    <value_1>
+                        <label>Titel 1</label>
+                        <value>title-1</value>
+                    </value_1>
+                    <value_2>
+                        <label>Title 2</label>
+                        <value>title-2</value>
+                    </value_2>
+                    <value_3>
+                        <label>Keine H1</label>
+                        <value>noH1</value>
+                    </value_3>
+                </values>
+                <sort_order>0</sort_order>
+            </h1_option>
+            <brand_header_title>
+                <visible>1</visible>
+                <label>Titel 1</label>
+                <description>1. oder einzige Zeile der Überschrift ein.</description>
+                <type>text</type>
+            </brand_header_title>
+            <brand_header_subTitle>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Titel 2</label>
+                <description>2. Zeile der Überschrift (oder leer)</description>
+                <type>text</type>
+            </brand_header_subTitle>
+            <call2Action>
+                <visible>1</visible>
+                <label>Call 2 Action Text</label>
+                <description>Hier kommt der Button Text hin.</description>
+                <type>text</type>
+            </call2Action>
+            <brand_header_titlePosition>
+                <visible>1</visible>
+                <label>Position des Titels und Untertitel</label>
+                <description>Sie können verschiedene Positionen für Titel und Untertitel wählen.</description>
+                <type>select</type>
+                <values>
+                    <value_1>
+                        <label>Titel rechts</label>
+                        <value>right</value>
+                    </value_1>
+                    <value_2>
+                        <label>Titel links</label>
+                        <value>left</value>
+                    </value_2>
+                </values>
+                <sort_order>0</sort_order>
+            </brand_header_titlePosition>
+            <brand_header_link>
+                <visible>1</visible>
+                <label>Link</label>
+                <description>Das Linkziel des Headers.</description>
+                <type>text</type>
+            </brand_header_link>
+            <brand_header_text>
+                <visible>1</visible>
+                <label>Text</label>
+                <description>Hier kommt der SEO Text rein.</description>
+                <type>textarea</type>
+            </brand_header_text>
+            <anchorlink>
+                <visible>1</visible>
+                <label>Ankerlink nach unten</label>
+                <description>Fügt einen Ankerlink am Ende des Textes ein.</description>
+                <type>checkbox</type>
+                <value>1</value>
+            </anchorlink>
+
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>webmasterei/landingpage/Header.phtml</value>
+            </template>
+        </parameters>
+    </brand_header_widget>
+    <brand_product_widget type="landingpage/Products" translate="name description">
+        <name>Webmasterei | Landingpage Products</name>
+        <description>Vorschau auf Produkte in CMS-Blöcken</description>
+        <parameters>
+            <product_1>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Produkt 1</label>
+                <type>text</type>
+                <sort_order>10</sort_order>
+            </product_1>
+            <product_1_text translate="label description">
+                <visible>1</visible>
+                <label>SEO Beschreibung des Produkt 1</label>
+                <description>Diese Beschreibung ersetzt den automatisch gezogenen Produkttext.</description>
+                <type>textarea</type>
+                <sort_order>20</sort_order>
+            </product_1_text>
+            <product_2>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Produkt 2</label>
+                <type>text</type>
+                <sort_order>30</sort_order>
+            </product_2>
+            <product_2_text translate="label description">
+                <visible>1</visible>
+                <label>SEO Beschreibung des Produkt 2</label>
+                <description>Diese Beschreibung ersetzt den automatisch gezogenen Produkttext.</description>
+                <type>textarea</type>
+                <sort_order>40</sort_order>
+            </product_2_text>
+            <product_3>
+                <visible>1</visible>
+                <required>0</required>
+                <label>Produkt 3</label>
+                <type>text</type>
+                <sort_order>45</sort_order>
+            </product_3>
+            <product_3_text translate="label description">
+                <visible>1</visible>
+                <label>SEO Beschreibung des Produkt 3</label>
+                <description>Diese Beschreibung ersetzt den automatisch gezogenen Produkttext.</description>
+                <type>textarea</type>
+                <sort_order>50</sort_order>
+            </product_3_text>
+            <product_4>
+                <visible>1</visible>
+                <required>0</required>
+                <label>Produkt 4</label>
+                <type>text</type>
+                <sort_order>60</sort_order>
+            </product_4>
+            <product_4_text translate="label description">
+                <visible>1</visible>
+                <label>SEO Beschreibung des Produkt 4</label>
+                <description>Diese Beschreibung ersetzt den automatisch gezogenen Produkttext.</description>
+                <type>textarea</type>
+                <sort_order>70</sort_order>
+            </product_4_text>
+            <block_title translate="label">
+                <visible>1</visible>
+                <label>Produkt Block Titel</label>
+                <type>text</type>
+                <sort_order>0</sort_order>
+            </block_title>
+            <product_size>
+                <visible>1</visible>
+                <label>Bildgröße</label>
+                <description>Für Gruppenprodukte mit großen Bildern mitte "Groß" wählen.</description>
+                <type>select</type>
+                <values>
+                    <large>
+                        <label>Groß</label>
+                        <value>large</value>
+                    </large>
+                    <small>
+                        <label>Klein</label>
+                        <value>small</value>
+                    </small>
+                </values>
+                <sort_order>0</sort_order>
+            </product_size>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>webmasterei/landingpage/Products.phtml</value>
+            </template>
+        </parameters>
+    </brand_product_widget>
+    <brand_categories_widget type="landingpage/Categories" translate="name description">
+        <name>Webmasterei | Landingpage Categories</name>
+        <description>Sie können zwischen 2-4 Inhaltselementen wählen. Bildgröße 2 Elemete: x265px Bildgröße 3 Elemente: x265 px Bildgröße 4 Elemente: 265x265 px</description>
+        <parameters>
+            <categorie_qty>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Anzahl an Kategorien</label>
+                <description>Sie können 2-4 Elemnte wählen. !!!Achtung!!! in Abhängigkeit zur Elementezahl ändern sich die Bildformate.</description>
+                <type>select</type>
+                <values>
+                    <value_1>
+                        <label>2</label>
+                        <value>1</value>
+                    </value_1>
+                    <value_2>
+                        <label>3</label>
+                        <value>2</value>
+                    </value_2>
+                    <value_3>
+                        <label>4</label>
+                        <value>3</value>
+                    </value_3>
+                </values>
+                <sort_order>0</sort_order>
+            </categorie_qty>
+            <categorie_1_title>
+                <visible>1</visible>
+                <required>0</required>
+                <label>Titel </label>
+                <description>Der Titel der Kategorie.</description>
+                <type>text</type>
+                <sort_order>100</sort_order>
+            </categorie_1_title>
+            <categorie_1_image>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Bild</label>
+                <description>Formate abhängig von Anzahl der Inhaltselemente *jpg, progressiv, Qualität 60 Es wird nicht skaliert.</description>
+                <type>widgetimagechooser/chooser</type>
+                <sort_order>130</sort_order>
+            </categorie_1_image>
+            <categorie_1_link>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Link</label>
+                <type>text</type>
+                <sort_order>110</sort_order>
+            </categorie_1_link>
+            <categorie_2_title>
+                <visible>1</visible>
+                <required>0</required>
+                <label>Titel </label>
+                <description>Der Titel der Kategorie.</description>
+                <type>text</type>
+                <sort_order>200</sort_order>
+            </categorie_2_title>
+            <categorie_2_image>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Bild</label>
+                <description>Formate abhängig von Anzahl der Inhaltselemente *jpg, progressiv, Qualität 60 Es wird nicht skaliert.</description>
+                <type>widgetimagechooser/chooser</type>
+                <sort_order>230</sort_order>
+            </categorie_2_image>
+            <categorie_2_link>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Link</label>
+                <type>text</type>
+                <sort_order>210</sort_order>
+            </categorie_2_link>
+            <categorie_3_title>
+                <visible>1</visible>
+                <label>Titel </label>
+                <description>Der Titel der Kategorie.</description>
+                <type>text</type>
+                <sort_order>300</sort_order>
+            </categorie_3_title>
+            <categorie_3_image>
+                <visible>1</visible>
+                <label>Bild</label>
+                <description>Formate abhängig von Anzahl der Inhaltselemente *jpg, progressiv, Qualität 60 Es wird nicht skaliert.</description>
+                <type>widgetimagechooser/chooser</type>
+                <sort_order>330</sort_order>
+            </categorie_3_image>
+            <categorie_3_link>
+                <visible>1</visible>
+                <label>Link</label>
+                <type>text</type>
+                <sort_order>310</sort_order>
+            </categorie_3_link>
+            <categorie_4_title>
+                <visible>1</visible>
+                <label>Titel </label>
+                <description>Der Titel der Kategorie.</description>
+                <type>text</type>
+                <sort_order>400</sort_order>
+            </categorie_4_title>
+            <categorie_4_image>
+                <visible>1</visible>
+                <label>Bild</label>
+                <description>Formate abhängig von Anzahl der Inhaltselemente *jpg, progressiv, Qualität 60 Es wird nicht skaliert.</description>
+                <type>widgetimagechooser/chooser</type>
+                <sort_order>430</sort_order>
+            </categorie_4_image>
+            <categorie_4_link>
+                <visible>1</visible>
+                <label>Link</label>
+                <type>text</type>
+                <sort_order>410</sort_order>
+            </categorie_4_link>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>webmasterei/landingpage/Categories.phtml</value>
+            </template>
+        </parameters>
+    </brand_categories_widget>
+    <brand_content_widget type="landingpage/Content" translate="name description">
+        <name>Webmasterei | Content Element</name>
+        <description>Erstellt ein Content Element mit Bild/Video, Titel, Text, Link in der linken oder rechten Spalte.
+        </description>
+        <parameters>
+            <content_column>
+                <visible>1</visible>
+                <label>Aufteilung</label>
+                <description>Für Gruppenprodukte mit großen Bildern mitte "Groß" wählen.</description>
+                <type>select</type>
+                <values>
+                    <large>
+                        <label>Bild/Video links</label>
+                        <value>left</value>
+                    </large>
+                    <small>
+                        <label>Bild/Video rechts</label>
+                        <value>right</value>
+                    </small>
+                </values>
+            </content_column>
+            <content_image>
+                <visible>1</visible>
+                <label>Bild</label>
+                <description>Ausgabeformat ist 622x325 px. JPG Files sind bei Bildern immer besser! Es wird nicht
+                    skaliert.
+                </description>
+                <type>widgetimagechooser/chooser</type>
+            </content_image>
+            <content_title>
+                <visible>1</visible>
+                <label>Titel</label>
+                <description>Bitte geben Sie hier den Titel ein.</description>
+                <type>text</type>
+            </content_title>
+            <content_text>
+                <visible>1</visible>
+                <label>Text</label>
+                <description>Hier kommt der Text rein. Basic-HTML ist erlaubt.</description>
+                <type>textarea</type>
+            </content_text>
+            <content_link>
+                <visible>1</visible>
+                <label>Link</label>
+                <description>Bitte geben Sie hier den Link als relativen Pfad zur Homepage ein. Bspl.:
+                    "/villeroy-und-boch.html"
+                </description>
+                <type>text</type>
+            </content_link>
+            <content_link_text>
+                <visible>1</visible>
+                <label>Linktext</label>
+                <description>Ist kein Text angegeben, wird der Titel genommen.</description>
+                <type>text</type>
+            </content_link_text>
+            <content_video>
+                <visible>1</visible>
+                <label>Video-URL</label>
+                <description>Der Link zum Video angeben.</description>
+                <type>text</type>
+            </content_video>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>webmasterei/landingpage/Content.phtml</value>
+            </template>
+        </parameters>
+    </brand_content_widget>
+    <menu_product type="landingpage/MenuProducts" translate="name description">
+        <name>Webmasterei | Menu Products</name>
+        <description>Produkte im Menü</description>
+        <parameters>
+            <sku_list translate="label description">
+                <visible>1</visible>
+                <label>Artikelnummern als Kommaliste</label>
+                <description>Artikelnummer Nummer1,Nummer2,Nummer,3 | ACHTUNG! Keine Leerzeichen zwischen Nummern Komma.
+                    Es werden 7 Produkte genommen wenn ein Werbebild existiert oder 11 wenn keins existiert.
+                </description>
+                <type>text</type>
+            </sku_list>
+            <menu_product_image>
+                <required>0</required>
+                <visible>1</visible>
+                <label>Bild</label>
+                <description>Ausgabeformat ist 335x395 px mit Alphakanal. Es wird nicht skaliert.</description>
+                <type>widgetimagechooser/chooser</type>
+            </menu_product_image>
+            <menu_product_link>
+                <repquired>0</repquired>
+                <visible>1</visible>
+                <label>Link</label>
+                <description>Bitte geben Sie hier den Link als relativen Pfad zur Homepage ein. Bspl.:
+                    "/villeroy-und-boch.html"
+                </description>
+                <type>text</type>
+            </menu_product_link>
+            <categoryId>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Kategorie ID</label>
+                <description>Hier die Kategorie ID angeben.</description>
+                <type>text</type>
+            </categoryId>
+            <menu_product_text>
+                <required>0</required>
+                <visible>1</visible>
+                <label>Bild-Alttext</label>
+                <description>Hier kann der Bildtext hinterlegt werden.</description>
+                <type>text</type>
+            </menu_product_text>
+            <menu_category_link>
+                <repquired>0</repquired>
+                <visible>1</visible>
+                <label>Kategorie Link</label>
+                <description>Bitte geben Sie hier den Link als relativen Pfad zur Homepage ein. Bspl.:
+                    "/villeroy-und-boch.html"
+                </description>
+                <type>text</type>
+            </menu_category_link>
+            <menu_category_text>
+                <required>0</required>
+                <visible>1</visible>
+                <label>Kategorie Weiter Text</label>
+                <description>Hier kann der Bildtext hinterlegt werden.</description>
+                <type>text</type>
+            </menu_category_text>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>webmasterei/landingpage/MenuProducts.phtml</value>
+            </template>
+        </parameters>
+    </menu_product>
+
+</widgets>

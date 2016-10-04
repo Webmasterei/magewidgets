@@ -1,0 +1,79 @@
+
+<?php
+$sku_list = $this->getData('sku_list');
+$productSkus = explode(",",$sku_list);
+$productCollection=Mage::getModel('catalog/product')->getCollection()
+    ->addAttributeToFilter('sku', array('in' => $productSkus))
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToSelect('*')
+    ->addUrlRewrite();
+$imageSize= $this->getData('product_size');
+$imageRenderSize=265;
+$headline_tag = $this->getData('headline_tag');
+
+$product_1 = $this->getData('product_1');
+$product_2 = $this->getData('product_2');
+$product_3 = $this->getData('product_3');
+$product_4 = $this->getData('product_4');
+$_products = array($product_1,$product_2,$product_3,$product_4);
+$_products =Mage::getModel('catalog/product')->getCollection()
+    ->addAttributeToFilter('sku', array('in' => $_products))
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToSelect('*')
+    ->addUrlRewrite();
+$_products_texts = array(
+    $product_1 => $this->getData('product_1_text'),
+    $product_2 => $this->getData('product_2_text'),
+    $product_3 => $this->getData('product_3_text'),
+    $product_4 => $this->getData('product_4_text')
+);
+
+
+
+
+
+?>
+
+<?php if($this->getData('block_title')) : ?><h2><?php  echo $this->getData('block_title'); ?></h2><?php endif;?>
+<div class="brandpage-product-row">
+
+<?php if($imageSize=='large'):
+    $imageRenderSize = array(
+        'x' => 724,
+        'y' => 378
+    );
+    ?>
+    <?php $i=1; foreach($_products as $_product): ?>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <a class="brandpage-product-large" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName();?>" class="product-image">
+                <img class="lazy img-responsive" data-original="<?php echo $this->helper('adaptiveResize/image')->init($_product, 'thumbnail')->adaptiveResize($imageRenderSize['x'],$imageRenderSize['y']); ?>" width="<?php echo $imageRenderSize['x'] ?>" height="<?php echo $imageRenderSize['y'] ?>" alt="<?php echo $_product->getName();?>" />
+            <noscript>
+                <img class="img-responsive" src="<?php echo $imageUrl = $this->helper('adaptiveResize/image')->init($_product, 'thumbnail')->adaptiveResize($imgSize); ?>" width="<?php echo $imgSize ?>" height="<?php echo $imgSize ?>" alt="<?php echo $_product->getName();?>" /></a>
+            </noscript>
+                <div class="brandpage-product-content">
+                    <i class="fa fa-angle-double-right action-button"></i>
+                <div class="h3"><?php echo $_product->getName();?></div>
+                <p><?php  if($_products_texts[$_product->getSku()]) { echo $_products_texts[$_product->getSku()]; } else {echo $_product->getShortDescription();} ?></p>
+                </div>
+            </a>
+
+        </div>
+    <?php $i++; endforeach; ?>
+
+<?php else : ?>
+
+
+<?php foreach($_products as $_product): ?>
+<div class="col-xs-6 col-sm-3 col-md-3">
+    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName();?>" class="product-image">
+        <img class="lazy img-responsive" data-original="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($imageRenderSize); ?>" width="<?php echo $imageRenderSize ?>" height="<?php echo $imageRenderSize ?>" alt="<?php echo $_product->getName();?>" />
+        <noscript>
+            <img class="img-responsive" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($imageRenderSize); ?>" width="<?php echo $imgSize ?>" height="<?php echo $imgSize ?>" alt="<?php echo $_product->getName();?>" /></a>
+        </noscript>
+    </a>
+    <div class="h4 text-center"><?php echo $_product->getName();?></div>
+</div>
+<?php endforeach; ?>
+    
+<?php endif;?>
+</div>
