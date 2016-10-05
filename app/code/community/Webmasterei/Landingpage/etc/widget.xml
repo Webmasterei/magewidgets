@@ -4,6 +4,31 @@
         <name>Webmasterei | Landingpage Headline</name>
         <description>Erstellt den Content-Header einer Hersteller-Landingpage</description>
         <parameters>
+            <landingpage_title_element>
+                <visible>1</visible>
+                <label>Title Element</label>
+                <description>Wählen Sie den Typ des Elements.</description>
+                <type>select</type>
+                <values>
+                    <value_1>
+                        <label>H1</label>
+                        <value>h1</value>
+                    </value_1>
+                    <value_2>
+                        <label>H2</label>
+                        <value>h2</value>
+                    </value_2>
+                    <value_3>
+                        <label>H3</label>
+                        <value>h3</value>
+                    </value_3>
+                    <value_4>
+                        <label>DIV</label>
+                        <value>div</value>
+                    </value_4>
+                </values>
+                <sort_order>0</sort_order>
+            </landingpage_title_element>
             <landingpage_header_title>
                 <visible>1</visible>
                 <label>Titel 1</label>
@@ -330,71 +355,22 @@
             </template>
         </parameters>
     </landingpage_content_widget>
-    <menu_product type="landingpage/MenuProducts" translate="name description">
-        <name>Webmasterei | Menu Products</name>
-        <description>Produkte im Menü</description>
+    <landingpage_blockitems type="landingpage/Blockitems" translate="name description">
+        <name>Webmasterei | Landingpage Block Items</name>
+        <description>Grab a list of Comma Separated Block ID'S and show them.</description>
         <parameters>
-            <sku_list translate="label description">
+            <block_ids>
                 <visible>1</visible>
-                <label>Artikelnummern als Kommaliste</label>
-                <description>Artikelnummer Nummer1,Nummer2,Nummer,3 | ACHTUNG! Keine Leerzeichen zwischen Nummern Komma.
-                    Es werden 7 Produkte genommen wenn ein Werbebild existiert oder 11 wenn keins existiert.
-                </description>
+                <label>Block ID's</label>
+                <description>Block ID's like "my_block_id,my_other_block_id"</description>
                 <type>text</type>
-            </sku_list>
-            <menu_product_image>
-                <required>0</required>
-                <visible>1</visible>
-                <label>Bild</label>
-                <description>Ausgabeformat ist 335x395 px mit Alphakanal. Es wird nicht skaliert.</description>
-                <type>widgetimagechooser/chooser</type>
-            </menu_product_image>
-            <menu_product_link>
-                <repquired>0</repquired>
-                <visible>1</visible>
-                <label>Link</label>
-                <description>Bitte geben Sie hier den Link als relativen Pfad zur Homepage ein. Bspl.:
-                    "/villeroy-und-boch.html"
-                </description>
-                <type>text</type>
-            </menu_product_link>
-            <categoryId>
-                <required>1</required>
-                <visible>1</visible>
-                <label>Kategorie ID</label>
-                <description>Hier die Kategorie ID angeben.</description>
-                <type>text</type>
-            </categoryId>
-            <menu_product_text>
-                <required>0</required>
-                <visible>1</visible>
-                <label>Bild-Alttext</label>
-                <description>Hier kann der Bildtext hinterlegt werden.</description>
-                <type>text</type>
-            </menu_product_text>
-            <menu_category_link>
-                <repquired>0</repquired>
-                <visible>1</visible>
-                <label>Kategorie Link</label>
-                <description>Bitte geben Sie hier den Link als relativen Pfad zur Homepage ein. Bspl.:
-                    "/villeroy-und-boch.html"
-                </description>
-                <type>text</type>
-            </menu_category_link>
-            <menu_category_text>
-                <required>0</required>
-                <visible>1</visible>
-                <label>Kategorie Weiter Text</label>
-                <description>Hier kann der Bildtext hinterlegt werden.</description>
-                <type>text</type>
-            </menu_category_text>
+            </block_ids>
             <template translate="label">
                 <label>Template</label>
                 <visible>0</visible>
                 <type>select</type>
-                <value>webmasterei/landingpage/MenuProducts.phtml</value>
+                <value>webmasterei/landingpage/Blockitems.phtml</value>
             </template>
         </parameters>
-    </menu_product>
-
+    </landingpage_blockitems>
 </widgets>

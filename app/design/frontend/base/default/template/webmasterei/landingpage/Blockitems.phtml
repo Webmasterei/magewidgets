@@ -1,0 +1,16 @@
+
+<?php
+
+$block_ids = explode(",",$this->getData('block_ids'));
+$baseUrl = Mage::getBaseUrl();
+$media_path = Mage::getBaseUrl('media');
+
+?>
+
+<div class="landingpage-blockitems">
+
+        <?php $i=1; foreach($block_ids as $block_id): ?>
+            <div class="column<?php echo $i ?>"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($block_id)->toHtml(); ?></div>
+        <?php $i++; endforeach;?>
+
+</div>

@@ -3,11 +3,11 @@
 $landingpage_header_title = $this->getData('landingpage_header_title');
 $landingpage_header_subtitle = $this->getData('landingpage_header_subtitle');
 $landingpage_header_css = $this->getData('landingpage_header_css');
-
+$landingpage_title_element = $this->getData('landingpage_title_element');
 ?>
 <div class="landingpage-header <?php echo $landingpage_header_css; ?>">
     <?php if($landingpage_header_title) : ?>
-        <h1><?php echo $landingpage_header_title ?></h1>
+        <<?php echo $landingpage_title_element ?>><?php echo $landingpage_header_title ?></<?php echo $landingpage_title_element ?>>
     <?php endif; ?>
     <?php if($landingpage_header_subtitle) : ?>
         <p><?php echo $landingpage_header_subtitle ?></p>
