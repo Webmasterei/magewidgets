@@ -2,6 +2,7 @@
 <layout>
     <default>
         <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/slidejs/jquery.slides.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/landingpage.js</name></action>
             <action method="addItem"><type>skin_css</type><name>css/landingpage.css</name></action>
         </reference>

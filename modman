@@ -4,3 +4,4 @@ app/code/community/Webmasterei/Landingpage                          app/code/com
 app/design/frontend/base/default/template/webmasterei/landingpage   app/design/frontend/base/default/template/webmasterei/landingpage
 skin/frontend/base/default/css/landingpage.css                      skin/frontend/base/default/css/landingpage.css
 skin/frontend/base/default/js/landingpage.js                        skin/frontend/base/default/js/landingpage.js
+skin/frontend/base/default/js/slidejs                               skin/frontend/base/default/js/slidejs
