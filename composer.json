@@ -1,86 +1,22 @@
 {
-  "minimum-stability":"dev",
-  "require":{
-    "magento-hackathon/magento-composer-installer": "3.*",
-    "aydin-hassan/magento-core-composer-installer" : "~1.0",
-    "magento/core": "1.9.2.4",
-    "colinmollenhour/modman": "*",
-    "firegento/debug":"dev-master",
-    "aoepeople/aoe_templatehints":"dev-master",
-    "aoepeople/aoe_scheduler":"dev-master",
-    "aoepeople/aoe_profiler":"dev-master",
-    "dbashyal/magento_resize_category_images":"dev-master",
-    "aschroder/smtp_pro":"dev-master",
-    "fooman/common":"dev-master",
-    "fooman/emailattachments":"dev-master",
-    "fooman/speedsteradvanced":"*",
-    "firegento/magesetup":"*",
-    "gordonlesti/lesti_fpc":"*",
-    "mediarox/pagespeed":"*",
-    "colinmollenhour/magento-redis-session":"*",
-    "colinmollenhour/cache-backend-redis":"*"
+  "name": "webmasterei/magewidgets",
+  "license": "OSL-3.0",
+  "type": "magento-module",
+  "description": "Widget Image Chooser",
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*",
+    "aijko/aijko_widgetimagechooser":"*"
   },
-  "scripts": {
-    "modman": "modman deploy-all --copy"
-  },
+  "authors":[
+    {
+      "name":"Webmasterei Prange",
+      "email":"info@webmasterei-prange.de"
+    }
+  ],
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/colinmollenhour/Cm_Cache_Backend_Redis.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/colinmollenhour/Cm_RedisSession.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/GordonLesti/Lesti_Fpc.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/fooman/common.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/fooman/speedsteradvanced.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/fooman/emailattachments.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/mediarox/pagespeed.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/AydinHassan/magento-core-composer-installer.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/Webmasterei/magento-core.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/AOEpeople/Aoe_TemplateHints.git"
-    },
-    {
-      "type": "composer",
-      "url": "https://packages.firegento.com"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/dbashyal/Magento-resize-category-images.git"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/vbuck/Inchoo_UrlRewriteImporter.git"
+      "url": "https://github.com/aijko/aijko-widgetimagechooser.git"
     }
-  ],
-  "extra":{
-    "magento-root-dir":"./htdocs",
-    "magento-deploystrategy": "copy",
-    "magento-force": true,
-    "git-ignore-append": false
-  }
+    ]
 }

@@ -1,9 +1,0 @@
-# Created by Webmasterei Prange
-.htaccess
-.htpasswd
-#index.php
-/app/etc/local.xml
-/var
-/media
-/olddata_for_save_remove
-/app/etc/modules/AOE_TemplateHints.xml

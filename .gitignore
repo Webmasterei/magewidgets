@@ -1,6 +1,7 @@
 /*
 !/.gitignore
-
+!modman
+!composer.json
 # List of Files that should be included in the git.
 !/app
 /app/*
