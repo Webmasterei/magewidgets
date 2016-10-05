@@ -43,5 +43,8 @@
 /skin/frontend/base/default/*
 !/skin/frontend/base/default/css
 /skin/frontend/base/default/css/*
-!/skin/frontend/base/default/css/magewidgets.css
-!/skin/frontend/base/default/css/magewidgetstyles.css
+!/skin/frontend/base/default/css/landingpage.css
+!/skin/frontend/base/default/js
+/skin/frontend/base/default/js/*
+!/skin/frontend/base/default/js/landingpage.js
+!/skin/frontend/base/default/js/slidejs

@@ -1,0 +1,1 @@
+/* This ist the JS File for Landingpage Widget */
