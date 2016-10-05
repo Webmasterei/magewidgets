@@ -23,6 +23,14 @@
                 <class>Webmasterei_Landingpage_Block</class>
             </landingpage>
         </blocks>
-
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <MageWidgets>
+                    <file>webmasterei_landingpage.xml</file>
+                </MageWidgets>
+            </updates>
+        </layout>
+    </frontend>
 </config>

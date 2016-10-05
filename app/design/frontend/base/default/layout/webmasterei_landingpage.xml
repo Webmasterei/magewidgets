@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <layout>
     <default>
         <reference name="head">
-
+            <action method="addItem"><type>skin_js</type><name>js/landingpage.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/landingpage.css</name></action>
         </reference>
     </default>
 </layout>

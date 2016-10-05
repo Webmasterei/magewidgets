@@ -12,26 +12,20 @@ $category_2 = $this->getWidgetCategory($category_id_2);
 $collectionOne = $this->_getNewProductCollection($category_1);
 $collectionOneCount = $collectionOne->count();
 $collectionOneTitle = $this->__('New Products');
-echo "Neue Produkte:".$collectionOne->count()."<br>";
 if (!$collectionOneCount) {
-    echo "there are no new products<br>";
     // Get Most Viewed Products
     $collectionOne = $this->getMostViewedProducts($category_1);
     $collectionOneCount = $collectionOne->count();
     $collectionOneTitle = $this->__('Most Viewed Products');
-    echo "collectionOneCount: ".$collectionOneCount;
 }
 // Getting Special Price Offers
 $collectionTwo = $this->_getSpecialProductsColletion($category_2);
 $collectionTwoCount = $collectionTwo->count();
 $collectionTwoTitle = $this->__('Discount Offers');
-echo "specialProductsCollectionCount: ".$collectionTwoCount."<br>";
 if (!$collectionTwoCount){
-    echo "There is no SpecialOffers<br>";
     $collectionTwo = $this->getBestsellerProducts($category_2);
     $collectionTwoCount = $collectionTwo->count();
     $collectionTwoTitle = $this->__('Bestseller');
-    echo "collectionTwo: ".$collectionTwoCount;
 }
 
 ?>

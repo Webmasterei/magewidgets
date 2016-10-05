@@ -1,0 +1,6 @@
+app/etc/modules/Webmasterei_Landingpage.xml                         app/etc/modules/Webmasterei_Landingpage.xml
+app/design/frontend/base/default/layout/webmasterei_landingpage.xml app/design/frontend/base/default/layout/webmasterei_landingpage.xml
+app/code/community/Webmasterei/Landingpage                          app/code/community/Webmasterei/Landingpage
+app/design/frontend/base/default/template/webmasterei/landingpage   app/design/frontend/base/default/template/webmasterei/landingpage
+skin/frontend/base/default/css/landingpage.css                      skin/frontend/base/default/css/landingpage.css
+skin/frontend/base/default/js/landingpage.js                        skin/frontend/base/default/js/landingpage.js
