@@ -235,116 +235,24 @@
     </landingpage_product_widget>
     <landingpage_categories_widget type="landingpage/Categories" translate="name description">
         <name>Webmasterei | Landingpage Categories</name>
-        <description>Sie können zwischen 2-4 Inhaltselementen wählen. Bildgröße 2 Elemete: x265px Bildgröße 3 Elemente: x265 px Bildgröße 4 Elemente: 265x265 px</description>
+        <description>csv Liste an Kategorie IDs die gezogen werden sollen.</description>
         <parameters>
-            <categorie_qty>
+            <category_ids>
                 <visible>1</visible>
                 <required>1</required>
                 <label>Anzahl an Kategorien</label>
-                <description>Sie können 2-4 Elemnte wählen. !!!Achtung!!! in Abhängigkeit zur Elementezahl ändern sich die Bildformate.</description>
-                <type>select</type>
-                <values>
-                    <value_1>
-                        <label>2</label>
-                        <value>1</value>
-                    </value_1>
-                    <value_2>
-                        <label>3</label>
-                        <value>2</value>
-                    </value_2>
-                    <value_3>
-                        <label>4</label>
-                        <value>3</value>
-                    </value_3>
-                </values>
-                <sort_order>0</sort_order>
-            </categorie_qty>
-            <categorie_1_title>
+                <description>Geben Sie eine Liste an Kategorie IDs an "56,5,21,4" usw...</description>
+                <type>text</type>
+                <sort_order>20</sort_order>
+            </category_ids>
+            <category_widget_title>
                 <visible>1</visible>
                 <required>0</required>
                 <label>Titel </label>
                 <description>Der Titel der Kategorie.</description>
                 <type>text</type>
-                <sort_order>100</sort_order>
-            </categorie_1_title>
-            <categorie_1_image>
-                <visible>1</visible>
-                <required>1</required>
-                <label>Bild</label>
-                <description>Formate abhängig von Anzahl der Inhaltselemente *jpg, progressiv, Qualität 60 Es wird nicht skaliert.</description>
-                <type>widgetimagechooser/chooser</type>
-                <sort_order>130</sort_order>
-            </categorie_1_image>
-            <categorie_1_link>
-                <visible>1</visible>
-                <required>1</required>
-                <label>Link</label>
-                <type>text</type>
-                <sort_order>110</sort_order>
-            </categorie_1_link>
-            <categorie_2_title>
-                <visible>1</visible>
-                <required>0</required>
-                <label>Titel </label>
-                <description>Der Titel der Kategorie.</description>
-                <type>text</type>
-                <sort_order>200</sort_order>
-            </categorie_2_title>
-            <categorie_2_image>
-                <visible>1</visible>
-                <required>1</required>
-                <label>Bild</label>
-                <description>Formate abhängig von Anzahl der Inhaltselemente *jpg, progressiv, Qualität 60 Es wird nicht skaliert.</description>
-                <type>widgetimagechooser/chooser</type>
-                <sort_order>230</sort_order>
-            </categorie_2_image>
-            <categorie_2_link>
-                <visible>1</visible>
-                <required>1</required>
-                <label>Link</label>
-                <type>text</type>
-                <sort_order>210</sort_order>
-            </categorie_2_link>
-            <categorie_3_title>
-                <visible>1</visible>
-                <label>Titel </label>
-                <description>Der Titel der Kategorie.</description>
-                <type>text</type>
-                <sort_order>300</sort_order>
-            </categorie_3_title>
-            <categorie_3_image>
-                <visible>1</visible>
-                <label>Bild</label>
-                <description>Formate abhängig von Anzahl der Inhaltselemente *jpg, progressiv, Qualität 60 Es wird nicht skaliert.</description>
-                <type>widgetimagechooser/chooser</type>
-                <sort_order>330</sort_order>
-            </categorie_3_image>
-            <categorie_3_link>
-                <visible>1</visible>
-                <label>Link</label>
-                <type>text</type>
-                <sort_order>310</sort_order>
-            </categorie_3_link>
-            <categorie_4_title>
-                <visible>1</visible>
-                <label>Titel </label>
-                <description>Der Titel der Kategorie.</description>
-                <type>text</type>
-                <sort_order>400</sort_order>
-            </categorie_4_title>
-            <categorie_4_image>
-                <visible>1</visible>
-                <label>Bild</label>
-                <description>Formate abhängig von Anzahl der Inhaltselemente *jpg, progressiv, Qualität 60 Es wird nicht skaliert.</description>
-                <type>widgetimagechooser/chooser</type>
-                <sort_order>430</sort_order>
-            </categorie_4_image>
-            <categorie_4_link>
-                <visible>1</visible>
-                <label>Link</label>
-                <type>text</type>
-                <sort_order>410</sort_order>
-            </categorie_4_link>
+                <sort_order>10</sort_order>
+            </category_widget_title>
             <template translate="label">
                 <label>Template</label>
                 <visible>0</visible>
