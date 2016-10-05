@@ -2,31 +2,102 @@
 $debug = 1;
 $category_id_1 = $this->getData('category_id_1');
 $category_id_2 = $this->getData('category_id_2');
-$slider_id = $this->getData('slider_id');
+$slider_ids = explode(",",$this->getData('slider_id'));
 $css = $this->getData('css');
 $store_id = Mage::App()->getStore()->getId();
 $category_1 = $this->getWidgetCategory($category_id_1);
 $category_2 = $this->getWidgetCategory($category_id_2);
 
 // Getting New Products
-$newProductsCollection = $this->_getNewProductCollection($category_1);
-$newProductsCollectionCount = $newProductsCollection->count();
-echo "Neue Produkte:".$newProductsCollection->count();
-if (!$newProductsCollectionCount) {
-    echo "there are no new products";
+$collectionOne = $this->_getNewProductCollection($category_1);
+$collectionOneCount = $collectionOne->count();
+$collectionOneTitle = $this->__('New Products');
+echo "Neue Produkte:".$collectionOne->count()."<br>";
+if (!$collectionOneCount) {
+    echo "there are no new products<br>";
     // Get Most Viewed Products
+    $collectionOne = $this->getMostViewedProducts($category_1);
+    $collectionOneCount = $collectionOne->count();
+    $collectionOneTitle = $this->__('Most Viewed Products');
+    echo "collectionOneCount: ".$collectionOneCount;
 }
 // Getting Special Price Offers
-$specialProductsCollection = $this->_getSpecialProductsColletion($category_2);
-$specialProductsCollectionCount = $specialProductsCollection->count();
-echo "specialProductsCollectionCount".$specialProductsCollectionCount;
-if (!$specialProductsCollectionCount){
-    echo "There is no SpecialOffers";
-    // get Most sold Products
+$collectionTwo = $this->_getSpecialProductsColletion($category_2);
+$collectionTwoCount = $collectionTwo->count();
+$collectionTwoTitle = $this->__('Discount Offers');
+echo "specialProductsCollectionCount: ".$collectionTwoCount."<br>";
+if (!$collectionTwoCount){
+    echo "There is no SpecialOffers<br>";
+    $collectionTwo = $this->getBestsellerProducts($category_2);
+    $collectionTwoCount = $collectionTwo->count();
+    $collectionTwoTitle = $this->__('Bestseller');
+    echo "collectionTwo: ".$collectionTwoCount;
 }
 
 ?>
 <div class="landingpage-topProducts <?php echo $css; ?>">
-    
+<div class="column-1">
+        <div class="block block-newarrivals">
+            <div class="block-title">
+                <h2><?php echo $collectionOneTitle ?></h2>
+            </div>
+            <div class="block-content">
+                <ol class="mini-products-list" id="block-newarrivals">
+                    <?php foreach($collectionOne as $_item): ?>
+                        <li class="item">
+                            <div class="product">
+                                <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(75) ?>" width="75" height="75" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
+                                <div class="product-details">
+                                    <p class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></p>
+                                    <?php echo $this->getPriceHtml($_item, true, '-newarrivals') ?>
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach ?>
+                </ol>
+            </div>
+        </div>
+</div>
+<div class="column-2">
+    <div class="block block-slider">
+        <div class="block-content">
+            <ol class="mini-products-list" id="block-discount-offers">
+                <?php echo print_r($slider_ids); ?>
+                <?php $i=0;  foreach($slider_ids as $slider_id): ?>
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($slider_id)->toHtml();
+                    ?>
+                <?php $i++;  endforeach ?>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="column-3">
+        <div class="block block-discount-offers">
+            <div class="block-title">
+                <h2><?php echo $collectionTwoTitle ?></h2>
+            </div>
+            <div class="block-content">
+                <ol class="mini-products-list" id="block-discount-offers">
+                    <?php foreach($collectionTwo as $_item): ?>
+                        <li class="item">
+                            <div class="product">
+                                <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(75) ?>" width="75" height="75" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
+                                <div class="product-details">
+                                    <p class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></p>
+                                    <?php echo $this->getPriceHtml($_item, true, '-discount-offers') ?>
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach ?>
+                </ol>
+            </div>
+        </div>
+</div>
 </div>
 

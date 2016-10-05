@@ -105,6 +105,43 @@
             </template>
         </parameters>
     </landingpage_topProducts>
+    <landingpage_slider_element type="landingpage/Slider" translate="name description">
+        <name>Webmasterei | Landingpage Slider Element</name>
+        <description>Define Slider Elements here.</description>
+        <parameters>
+            <headline>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Headline</label>
+                <type>text</type>
+            </headline>
+            <image>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Image</label>
+                <type>widgetimagechooser/chooser</type>
+            </image>
+            <button_text>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Button Text</label>
+                <type>text</type>
+            </button_text>
+            <button_link>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Button Link</label>
+                <description>Please give a RELATIVE LINK i.E. "my-product.html"</description>
+                <type>text</type>
+            </button_link>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>webmasterei/landingpage/Slider.phtml</value>
+            </template>
+        </parameters>
+    </landingpage_slider_element>
     <landingpage_product_widget type="landingpage/Products" translate="name description">
         <name>Webmasterei | Landingpage Products</name>
         <description>Vorschau auf Produkte in CMS-Blöcken</description>

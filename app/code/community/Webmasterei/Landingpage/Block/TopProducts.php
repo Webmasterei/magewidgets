@@ -19,6 +19,7 @@ class Webmasterei_Landingpage_Block_TopProducts
         $collection = $this->_addProductAttributesAndPrices($collection)
             ->addStoreFilter()
             ->addCategoryFilter($category)
+            ->addUrlRewrite()
             ->addAttributeToFilter('news_from_date', array('date' => true, 'to' => $todayDate))
             ->addAttributeToFilter('news_to_date', array('or'=> array(
                 0 => array('date' => true, 'from' => $todayDate),
@@ -42,6 +43,7 @@ class Webmasterei_Landingpage_Block_TopProducts
             'special_price'
         ))
             ->addCategoryFilter($category)
+            ->addUrlRewrite()
             ->addFieldToFilter('visibility', array(
                 Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
                 Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
@@ -57,7 +59,61 @@ class Webmasterei_Landingpage_Block_TopProducts
 
         return $collection;
     }
+    public function getMostViewedProducts($category)
+    {
+        // store ID
+        $storeId    = Mage::app()->getStore()->getId();
 
+        // get most viewed products for current category
+        $collection = Mage::getResourceModel('reports/product_collection')
+            ->addAttributeToSelect('*')
+            ->setStoreId($storeId)
+            ->addStoreFilter($storeId)
+            ->addViewsCount()
+            ->addUrlRewrite()
+            ->addCategoryFilter($category)
+            ->setPageSize(8);
+
+        Mage::getSingleton('catalog/product_status')
+            ->addVisibleFilterToCollection($collection);
+        Mage::getSingleton('catalog/product_visibility')
+            ->addVisibleInCatalogFilterToCollection($collection);
+
+        return $collection;
+    }
+
+    public function getBestsellerProducts($category)
+    {
+        $storeId = (int) Mage::app()->getStore()->getId();
+
+        // Date
+        $date = new Zend_Date();
+        $toDate = $date->setDay(1)->getDate()->get('Y-MM-dd');
+        $fromDate = $date->subMonth(1)->getDate()->get('Y-MM-dd');
+
+        $collection = Mage::getResourceModel('catalog/product_collection')
+            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
+            ->addStoreFilter()
+            ->addPriceData()
+            ->addTaxPercents()
+            ->addUrlRewrite()
+            ->addCategoryFilter($category)
+            ->setPageSize(8);
+
+        $collection->getSelect()
+            ->joinLeft(
+                array('aggregation' => $collection->getResource()->getTable('sales/bestsellers_aggregated_monthly')),
+                "e.entity_id = aggregation.product_id AND aggregation.store_id={$storeId} AND aggregation.period BETWEEN '{$fromDate}' AND '{$toDate}'",
+                array('SUM(aggregation.qty_ordered) AS sold_quantity')
+            )
+            ->group('e.entity_id')
+            ->order(array('sold_quantity DESC', 'e.created_at'));
+
+        Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
+        Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
+
+        return $collection;
+    }
     protected function getWidgetCategory($categoryId)
     {
         $storeId = Mage::app()->getStore()->getStoreId();
@@ -73,4 +129,6 @@ class Webmasterei_Landingpage_Block_TopProducts
         }
         return $category;
     }
+
+
 }// Mage_Catalog_Block_Product_New

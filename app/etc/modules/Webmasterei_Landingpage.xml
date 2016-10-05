@@ -11,6 +11,9 @@
         <Webmasterei_Landingpage>
             <active>true</active>
             <codePool>community</codePool>
+            <depends>
+                <Aijko_WidgetImageChooser />
+            </depends>
         </Webmasterei_Landingpage>
     </modules>
 </config>
