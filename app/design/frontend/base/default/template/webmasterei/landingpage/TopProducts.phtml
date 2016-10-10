@@ -59,7 +59,6 @@ if (!$collectionTwoCount){
     <div class="block block-slider">
         <div class="block-content">
             <ol class="mini-products-list" id="block-discount-offers">
-                <?php echo print_r($slider_ids); ?>
                 <?php $i=0;  foreach($slider_ids as $slider_id): ?>
                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($slider_id)->toHtml();
                     ?>
