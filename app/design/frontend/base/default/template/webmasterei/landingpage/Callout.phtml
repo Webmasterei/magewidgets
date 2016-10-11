@@ -1,13 +1,15 @@
 <?php
 
 $title = $this->getData('headline');
+$subline = $this->getData('subline');
 $image = Mage::getBaseUrl('media').$this->getData('image');
 $button_text = $this->getData('button_text');
 $button_link = Mage::getBaseUrl().$this->getData('button_link');
 
 ?>
 <div class="content-item">
-    <div class="title"><?php echo $title; ?></div>
+    <span class="title"><?php echo $title; ?></span>
+    <span class="subline"><?php echo $subline; ?></span>
     <img src="<?php echo $image; ?>" alt="<?php echo $title;?>"/>
     <a href="<?php echo $button_link;?>" class="button" ><?php echo $button_text; ?></a>
 </div>

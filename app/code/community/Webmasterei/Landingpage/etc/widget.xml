@@ -171,6 +171,12 @@
         <name>Webmasterei | Landingpage Callout Element</name>
         <description>Define the callout here.</description>
         <parameters>
+            <subline>
+                <visible>1</visible>
+                <required>0</required>
+                <label>Subline</label>
+                <type>text</type>
+            </subline>
             <headline>
                 <visible>1</visible>
                 <required>1</required>
@@ -185,13 +191,13 @@
             </image>
             <button_text>
                 <visible>1</visible>
-                <required>1</required>
+                <required></required>
                 <label>Button Text</label>
                 <type>text</type>
             </button_text>
             <button_link>
                 <visible>1</visible>
-                <required>1</required>
+                <required></required>
                 <label>Button Link</label>
                 <description>Please give a RELATIVE LINK i.E. "my-product.html"</description>
                 <type>text</type>

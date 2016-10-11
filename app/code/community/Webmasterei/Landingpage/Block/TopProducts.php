@@ -10,7 +10,7 @@ class Webmasterei_Landingpage_Block_TopProducts
      *
      * @return Mage_Eav_Model_Entity_Collection_Abstract
      **/
-    protected function _getNewProductCollection($category)
+    protected function _getNewProductCollection($category,$maxItems)
     {
         $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
         $collection = Mage::getResourceModel('catalog/product_collection');
@@ -25,14 +25,15 @@ class Webmasterei_Landingpage_Block_TopProducts
                 0 => array('date' => true, 'from' => $todayDate),
                 1 => array('is' => new Zend_Db_Expr('null')))
             ), 'left')
-            ->addAttributeToSort('news_from_date', 'desc');
+            ->addAttributeToSort('news_from_date', 'desc')
+            ->setPageSize($maxItems);
 
         $this->setProductCollection($collection);
 
         return $collection;
     }
 
-    protected function _getSpecialProductsColletion($category)
+    protected function _getSpecialProductsColletion($category,$maxItems)
     {
         $collection = Mage::getModel('catalog/product')->getCollection();
         $collection->addAttributeToSelect(array(
@@ -52,14 +53,14 @@ class Webmasterei_Landingpage_Block_TopProducts
             ->addAttributeToSort('special_price', 'asc') //in case we would like to sort products by price
             ->getSelect()
             ->where('price_index.final_price < price_index.price')
-//                        ->limit(30) //we can specify how many products we want to show on this page
+            ->limit($maxItems) //we can specify how many products we want to show on this page
 //                        ->order(new Zend_Db_Expr('RAND()')) //in case we would like to sort products randomly
 
         ;
 
         return $collection;
     }
-    public function getMostViewedProducts($category)
+    public function getMostViewedProducts($category,$maxItems)
     {
         // store ID
         $storeId    = Mage::app()->getStore()->getId();
@@ -72,7 +73,7 @@ class Webmasterei_Landingpage_Block_TopProducts
             ->addViewsCount()
             ->addUrlRewrite()
             ->addCategoryFilter($category)
-            ->setPageSize(8);
+            ->setPageSize($maxItems);
 
         Mage::getSingleton('catalog/product_status')
             ->addVisibleFilterToCollection($collection);
@@ -82,7 +83,7 @@ class Webmasterei_Landingpage_Block_TopProducts
         return $collection;
     }
 
-    public function getBestsellerProducts($category)
+    public function getBestsellerProducts($category,$maxItems)
     {
         $storeId = (int) Mage::app()->getStore()->getId();
 
@@ -98,7 +99,7 @@ class Webmasterei_Landingpage_Block_TopProducts
             ->addTaxPercents()
             ->addUrlRewrite()
             ->addCategoryFilter($category)
-            ->setPageSize(8);
+            ->setPageSize($maxItems);
 
         $collection->getSelect()
             ->joinLeft(

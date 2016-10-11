@@ -1,5 +1,9 @@
 <?php
 $debug = 1;
+$maxItems = $this->getData('max_products');
+if(!$maxItems){
+    $maxItems = 8;
+}
 $category_id_1 = $this->getData('category_id_1');
 $category_id_2 = $this->getData('category_id_2');
 $slider_ids = explode(",",$this->getData('slider_id'));
@@ -9,21 +13,21 @@ $category_1 = $this->getWidgetCategory($category_id_1);
 $category_2 = $this->getWidgetCategory($category_id_2);
 
 // Getting New Products
-$collectionOne = $this->_getNewProductCollection($category_1);
+$collectionOne = $this->_getNewProductCollection($category_1,$maxItems);
 $collectionOneCount = $collectionOne->count();
 $collectionOneTitle = $this->__('New Products');
 if (!$collectionOneCount) {
     // Get Most Viewed Products
-    $collectionOne = $this->getMostViewedProducts($category_1);
+    $collectionOne = $this->getMostViewedProducts($category_1,$maxItems);
     $collectionOneCount = $collectionOne->count();
     $collectionOneTitle = $this->__('Most Viewed Products');
 }
 // Getting Special Price Offers
-$collectionTwo = $this->_getSpecialProductsColletion($category_2);
+$collectionTwo = $this->_getSpecialProductsColletion($category_2,$maxItems);
 $collectionTwoCount = $collectionTwo->count();
 $collectionTwoTitle = $this->__('Discount Offers');
 if (!$collectionTwoCount){
-    $collectionTwo = $this->getBestsellerProducts($category_2);
+    $collectionTwo = $this->getBestsellerProducts($category_2,$maxItems);
     $collectionTwoCount = $collectionTwo->count();
     $collectionTwoTitle = $this->__('Bestseller');
 }
