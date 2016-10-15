@@ -36,13 +36,7 @@ class Webmasterei_Landingpage_Block_TopProducts
     protected function _getSpecialProductsColletion($category,$maxItems)
     {
         $collection = Mage::getModel('catalog/product')->getCollection();
-        $collection->addAttributeToSelect(array(
-            'image',
-            'name',
-            'short_description',
-            'price',
-            'special_price'
-        ))
+        $collection->addAttributeToSelect('*')
             ->addCategoryFilter($category)
             ->addUrlRewrite()
             ->addFieldToFilter('visibility', array(
@@ -93,7 +87,7 @@ class Webmasterei_Landingpage_Block_TopProducts
         $fromDate = $date->subMonth(1)->getDate()->get('Y-MM-dd');
 
         $collection = Mage::getResourceModel('catalog/product_collection')
-            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
+            ->addAttributeToSelect('*')
             ->addStoreFilter()
             ->addPriceData()
             ->addTaxPercents()
