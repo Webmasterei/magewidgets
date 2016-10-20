@@ -126,4 +126,5 @@ class Webmasterei_Landingpage_Block_TopProducts
     }
 
 
-}// Mage_Catalog_Block_Product_New
+}
+

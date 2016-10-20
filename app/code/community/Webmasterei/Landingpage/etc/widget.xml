@@ -129,7 +129,81 @@
                 <value>webmasterei/landingpage/TopProducts.phtml</value>
             </template>
         </parameters>
-    </landingpage_topProducts>
+    </landingpage_topProducts >
+    <landingpage_product_slider type="landingpage/ProductSlider" translate="name description">
+        <name>Webmasterei | Landingpage Product Slider</name>
+        <description>Erstellt 3 Spalten mit Produktneuheiten | Slider | Aktuelle Angebote</description>
+        <parameters>
+            <category_id>
+                <visible>1</visible>
+                <label>Kategorie des Slider</label>
+                <description>(Optional) Hier kann eine spezielle Kategorie gesetzt werden.</description>
+                <type>Text</type>
+            </category_id>
+            <items_count>
+                <visible>1</visible>
+                <label>Anzahl der Produkte</label>
+                <description>Geben Sie an, wieviele Produkte gezeigt werden sollen. (default = 8)</description>
+                <type>Text</type>
+            </items_count>
+            <logic>
+                <visible>1</visible>
+                <label>Produktlogik</label>
+                <description>Wählen Sie 4 verschiedene Algorythmen, nach denen Produkte ausgewählt werden.</description>
+                <type>select</type>
+                <values>
+                    <value_1>
+                        <label>Neue Produkte</label>
+                        <value>newproducts</value>
+                    </value_1>
+                    <value_2>
+                        <label>Angebote</label>
+                        <value>sale</value>
+                    </value_2>
+                    <value_3>
+                        <label>Bestseller</label>
+                        <value>bestseller</value>
+                    </value_3>
+                    <value_4>
+                        <label>Am meisten angesehen</label>
+                        <value>mostviewed</value>
+                    </value_4>
+                </values>
+                <sort_order>0</sort_order>
+            </logic>
+            <css>
+                <visible>1</visible>
+                <label>CSS Selector</label>
+                <description>Sie können verschiedene CSS Selektoren wählen.</description>
+                <type>select</type>
+                <values>
+                    <value_1>
+                        <label>CSS Option 1</label>
+                        <value>css_option_1</value>
+                    </value_1>
+                    <value_2>
+                        <label>CSS Option 2</label>
+                        <value>css_option_2</value>
+                    </value_2>
+                    <value_3>
+                        <label>CSS Option 3</label>
+                        <value>css_option_3</value>
+                    </value_3>
+                    <value_4>
+                        <label>CSS Option 4</label>
+                        <value>css_option_4</value>
+                    </value_4>
+                </values>
+                <sort_order>0</sort_order>
+            </css>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>webmasterei/landingpage/ProductSlider.phtml</value>
+            </template>
+        </parameters>
+    </landingpage_product_slider>
     <landingpage_slider_element type="landingpage/Slider" translate="name description">
         <name>Webmasterei | Landingpage Slider Element</name>
         <description>Define Slider Elements here.</description>

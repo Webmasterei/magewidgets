@@ -1,0 +1,55 @@
+<?php
+$debug = 1;
+$maxItems = $this->getData('items_count');
+if(!$maxItems){
+    $maxItems = 8;
+}
+$category_id = $this->getData('category_id');
+$logic = $this->getData('logic');
+$css = $this->getData('css');
+$store_id = Mage::App()->getStore()->getId();
+$category = $this->getWidgetCategory($category_id);
+
+// Set Variables for all Cases defined by logik
+if($logic=="sales"){
+    $collectionTitle = $this->__('Discount Offers');
+    $collection = $this->_getSpecialProductsColletion($category,$maxItems);
+} elseif($logic=="newproducts") {
+    $collectionTitle = $this->__('New Products');
+    $collection = $this->_getNewProductCollection($category,$maxItems);
+} elseif($logic=="bestseller") {
+    $collectionTitle = $this->__('Bestseller');
+    $collection = $this->getBestsellerProducts($category,$maxItems);
+} else {
+    $collectionTitle = $this->__('Most Viewed Products');
+    $collection = $this->getMostViewedProducts($category,$maxItems);
+}
+
+// Getting New Products
+$collectionCount = $collection->count();
+
+?>
+<div class="landingpage-product-slider <?php echo $css; ?>">
+            <div class="<?php echo $logic;?>">
+                <h2><?php echo $collectionTitle ?></h2>
+            </div>
+            <div class="block-content">
+                <ol class="mini-products-list" id="block-newarrivals">
+                    <?php foreach($collection as $_item): ?>
+                        <li class="item">
+                            <div class="product">
+                                <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(75) ?>" width="75" height="75" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
+                                <div class="product-details">
+                                    <p class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></p>
+                                    <?php echo $this->getPriceHtml($_item, true, '-newarrivals') ?>
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach ?>
+                </ol>
+            </div>
+</div>
+
