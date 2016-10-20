@@ -10,14 +10,15 @@ $media_path = Mage::getBaseUrl('media');
 
 <div class="landingpage-categories">
     <h2><?php echo $category_widget_title ?></h2>
-    <ul class="slider">
+    <div class="row">
         <?php foreach($category_ids as $category_id): ?>
             <?php $category = Mage::getModel('catalog/category')->load($category_id);?>
-            <li class="slider-item">
+            <div class="category">
+                <a class="link" href="<?php echo $category->getUrl();?>">
                 <img class="image" src="<?php echo $category->getImageUrl();?>" alt="" />
                 <div class="title"><?php echo $category->getName(); ?></div>
-                <a class="link" href="<?php echo $category->getUrl();?>"><?php echo $this->__('Category'); ?></a>
-            </li>
+                </a>
+            </div>
         <?php endforeach;?>
-    </ul>
+    </div>
 </div>

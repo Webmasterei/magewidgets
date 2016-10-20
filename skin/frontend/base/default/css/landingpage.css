@@ -1,1 +1,29 @@
 /* CSS File for all Landingpage Widgets */
+.landingpage-categories .row {
+  clear: both; }
+  .landingpage-categories .row .category {
+    width: 50%;
+    float: left;
+    position: relative;
+    overflow: hidden; }
+    .landingpage-categories .row .category img {
+      max-width: 100%;
+      -moz-transition: all 2s;
+      -webkit-transition: all 2s;
+      transition: all 2s; }
+    .landingpage-categories .row .category:hover img {
+      -moz-transform: scale(1.5);
+      -webkit-transform: scale(1.5);
+      transform: scale(1.5); }
+    .landingpage-categories .row .category a .title {
+      background-color: #000;
+      color: #fff;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 0.5em;
+      font-size: 180%; }
+    .landingpage-categories .row .category a:hover, .landingpage-categories .row .category a:focus {
+      text-decoration: none; }
+
+/*# sourceMappingURL=landingpage.css.map */
