@@ -15,17 +15,20 @@ class Webmasterei_Landingpage_Block_TopProducts
         $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
         $collection = Mage::getResourceModel('catalog/product_collection');
         $collection->setVisibility(Mage::getSingleton('catalog/product_visibility')->getVisibleInCatalogIds());
-
+        echo $todayDate;
         $collection = $this->_addProductAttributesAndPrices($collection)
             ->addStoreFilter()
             ->addCategoryFilter($category)
             ->addUrlRewrite()
-            ->addAttributeToFilter('news_from_date', array('date' => true, 'to' => $todayDate))
+            ->addAttributeToFilter('news_from_date', array('or'=> array(
+                0 => array('date' => true, 'to' => $todayDate),
+                1 => array('is' => new Zend_Db_Expr('null')))
+            ), 'left')
             ->addAttributeToFilter('news_to_date', array('or'=> array(
                 0 => array('date' => true, 'from' => $todayDate),
                 1 => array('is' => new Zend_Db_Expr('null')))
             ), 'left')
-            ->addAttributeToSort('news_from_date', 'desc')
+            ->addAttributeToSort('news_to_date', 'asc')
             ->setPageSize($maxItems);
 
         $this->setProductCollection($collection);
@@ -114,7 +117,7 @@ class Webmasterei_Landingpage_Block_TopProducts
         $storeId = Mage::app()->getStore()->getStoreId();
         $currentCategory =  Mage::registry('current_category');
         if($categoryId) {
-        $category = Mage::getModel('catalog/category')->load($categoryId);
+            $category = Mage::getModel('catalog/category')->load($categoryId);
         }
         elseif($currentCategory) {
             $category = $currentCategory;
