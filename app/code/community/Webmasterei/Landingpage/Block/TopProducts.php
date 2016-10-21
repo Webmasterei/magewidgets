@@ -15,7 +15,6 @@ class Webmasterei_Landingpage_Block_TopProducts
         $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
         $collection = Mage::getResourceModel('catalog/product_collection');
         $collection->setVisibility(Mage::getSingleton('catalog/product_visibility')->getVisibleInCatalogIds());
-        echo $todayDate;
         $collection = $this->_addProductAttributesAndPrices($collection)
             ->addStoreFilter()
             ->addCategoryFilter($category)
