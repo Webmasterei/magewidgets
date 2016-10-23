@@ -490,4 +490,65 @@
             </template>
         </parameters>
     </landingpage_blockitems>
+    <landingpage_video type="landingpage/Video" translate="name description">
+        <name>Webmasterei | Landingpage Video</name>
+        <description>Show a video</description>
+        <parameters>
+            <platform>
+                <visible>1</visible>
+                <label>Plattform</label>
+                <description>Welche Plattform hat das Video</description>
+                <type>select</type>
+                <values>
+                    <selfhosted>
+                        <label>Selfhosted</label>
+                        <value>selfhosted</value>
+                    </selfhosted>
+                    <youtube>
+                        <label>Youtube</label>
+                        <value>youtube</value>
+                    </youtube>
+                </values>
+            </platform>
+            <youtube_id>
+                <visible>1</visible>
+                <label>Youtube ID</label>
+                <description>ID des Videos z.B. "askjdbasdiz"</description>
+                <type>text</type>
+                <depends>
+                    <platform>
+                        <value>youtube</value>
+                    </platform>
+                </depends>
+            </youtube_id>
+            <url_mp4>
+                <visible>1</visible>
+                <label>MP4 Pfad</label>
+                <description>Pfad relateiv zu myshop.com/media/</description>
+                <type>text</type>
+                <depends>
+                    <platform>
+                        <value>selfhosted</value>
+                    </platform>
+                </depends>
+            </url_mp4>
+            <url_ogg>
+                <visible>1</visible>
+                <label>OGG Pfad</label>
+                <description>Pfad relateiv zu myshop.com/media/</description>
+                <type>text</type>
+                <depends>
+                    <platform>
+                        <value>selfhosted</value>
+                    </platform>
+                </depends>
+            </url_ogg>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>select</type>
+                <value>webmasterei/landingpage/Video.phtml</value>
+            </template>
+        </parameters>
+    </landingpage_video>
 </widgets>
