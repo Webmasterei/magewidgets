@@ -510,6 +510,22 @@
                     </youtube>
                 </values>
             </platform>
+            <autoplay>
+                <visible>1</visible>
+                <label>Autoplay</label>
+                <description>Soll das Video von selbst abgespielt werden?</description>
+                <type>select</type>
+                <values>
+                    <selfhosted>
+                        <label>Ja</label>
+                        <value>1</value>
+                    </selfhosted>
+                    <youtube>
+                        <label>Nein</label>
+                        <value>0</value>
+                    </youtube>
+                </values>
+            </autoplay>
             <youtube_id>
                 <visible>1</visible>
                 <label>Youtube ID</label>
@@ -524,7 +540,7 @@
             <url_mp4>
                 <visible>1</visible>
                 <label>MP4 Pfad</label>
-                <description>Pfad relateiv zu myshop.com/media/</description>
+                <description>Pfad relativ zu myshop.com/media/</description>
                 <type>text</type>
                 <depends>
                     <platform>
@@ -535,7 +551,7 @@
             <url_ogg>
                 <visible>1</visible>
                 <label>OGG Pfad</label>
-                <description>Pfad relateiv zu myshop.com/media/</description>
+                <description>Pfad relativ zu myshop.com/media/</description>
                 <type>text</type>
                 <depends>
                     <platform>
@@ -543,6 +559,28 @@
                     </platform>
                 </depends>
             </url_ogg>
+            <url_webm>
+                <visible>1</visible>
+                <label>Webm Pfad</label>
+                <description>Pfad relativ zu myshop.com/media/</description>
+                <type>text</type>
+                <depends>
+                    <platform>
+                        <value>selfhosted</value>
+                    </platform>
+                </depends>
+            </url_webm>
+            <url_mov>
+                <visible>1</visible>
+                <label>Quicktime Pfad</label>
+                <description>Pfad relativ zu myshop.com/media/</description>
+                <type>text</type>
+                <depends>
+                    <platform>
+                        <value>selfhosted</value>
+                    </platform>
+                </depends>
+            </url_mov>
             <template translate="label">
                 <label>Template</label>
                 <visible>0</visible>

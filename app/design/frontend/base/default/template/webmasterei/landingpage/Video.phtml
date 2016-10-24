@@ -9,18 +9,30 @@ $platform = $this->getData('platform');
 $youtube_id = $this->getData('youtube_id');
 $url_mp4 = $this->getData('url_mp4');
 $url_ogg = $this->getData('url_ogg');
+$url_webm = $this->getData('url_webm');
+$url_mov = $this->getData('url_mov');
+$autoplay = $this->getData('autoplay');
 
 ?>
-<div class="flex-video">
-    <?php if ($platform == 'youtube'): ?>
-            <iframe width="420" height="315" src="//www.youtube.com/embed/<?php echo $youtube_id; ?>" frameborder="0"
+    <div class="flex-video">
+        <?php if ($platform == 'youtube'): ?>
+            <iframe width="420" height="315" src="//www.youtube.com/embed/<?php echo $youtube_id; if($autoplay==1) { echo "?autoplay=1"; } ?>" frameborder="0"
                     allowfullscreen></iframe>
-    <?php elseif ($platform == 'selfhosted') : ?>
-        <video>
-            <source src="<?php echo $this->getMediaUrl() . $url_ogg ?>" type="video/ogg">
-            <source src="<?php echo $this->getMediaUrl() . $url_mp4 ?>" type="video/mp4">
-        </video>
-    <?php endif; ?>
-</div>
-
-
+        <?php elseif ($platform == 'selfhosted') : ?>
+            <video <?php if($autoplay==1) { echo "autoplay"; } ?> autobuffer controls autoplay="true">
+                <?php if($url_webm): ?><source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $url_webm ?>" type="video/webm"><?php endif;?>
+                <?php if($url_mov): ?><source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $url_mov ?>" type="video/mov"><?php endif;?>
+                <?php if($url_mp4): ?><source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $url_mp4 ?>" type="video/mp4"><?php endif;?>
+                <?php if($url_ogg): ?><source src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $url_ogg ?>" type="video/ogg"><?php endif;?>
+            </video>
+        <?php endif; ?>
+    </div>
+<?php if($autoplay==1) : ?>
+    <script> jQuery(document).ready(function($){
+            var $video = $('video');
+            $video.on('canplaythrough', function() {
+                this.play();
+            });
+        });
+    </script>
+<?php endif; ?>
