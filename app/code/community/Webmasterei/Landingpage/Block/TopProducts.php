@@ -27,7 +27,7 @@ class Webmasterei_Landingpage_Block_TopProducts
                 0 => array('date' => true, 'from' => $todayDate),
                 1 => array('is' => new Zend_Db_Expr('null')))
             ), 'left')
-            ->addAttributeToSort('news_to_date', 'asc')
+            ->addAttributeToSort('updated_at', 'desc')
             ->setPageSize($maxItems);
 
         $this->setProductCollection($collection);
@@ -46,7 +46,7 @@ class Webmasterei_Landingpage_Block_TopProducts
                 Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
             )) //showing just products visible in catalog or both search and catalog
             ->addFinalPrice()
-            ->addAttributeToSort('special_price', 'asc') //in case we would like to sort products by price
+            ->addAttributeToSort('updated_at', 'desc') //in case we would like to sort products by price
             ->getSelect()
             ->where('price_index.final_price < price_index.price')
             ->limit($maxItems) //we can specify how many products we want to show on this page
