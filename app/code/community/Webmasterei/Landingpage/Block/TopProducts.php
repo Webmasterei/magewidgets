@@ -18,7 +18,6 @@ class Webmasterei_Landingpage_Block_TopProducts
         $collection = $this->_addProductAttributesAndPrices($collection)
             ->addStoreFilter()
             ->addCategoryFilter($category)
-            ->addUrlRewrite()
             ->addAttributeToFilter('news_from_date', array('or'=> array(
                 0 => array('date' => true, 'to' => $todayDate),
                 1 => array('is' => new Zend_Db_Expr('null')))
@@ -27,6 +26,13 @@ class Webmasterei_Landingpage_Block_TopProducts
                 0 => array('date' => true, 'from' => $todayDate),
                 1 => array('is' => new Zend_Db_Expr('null')))
             ), 'left')
+            ->addAttributeToFilter(
+                array(
+                    array('attribute' => 'news_from_date', 'is'=>new Zend_Db_Expr('not null')),
+                    array('attribute' => 'news_to_date', 'is'=>new Zend_Db_Expr('not null'))
+                )
+            )
+            ->addUrlRewrite()
             ->addAttributeToSort('updated_at', 'desc')
             ->setPageSize($maxItems);
 
